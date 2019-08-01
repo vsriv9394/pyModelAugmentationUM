@@ -442,7 +442,7 @@ class FIML:
 
                 # Evaluate the value of objective function and add to the total objective function (sum of all the cases)
 
-                obj_value = obj_value + self.eqns[i_eqn].getObj(self.data)
+                obj_value = obj_value + self.eqns[i_eqn].getObj(self.data[i_eqn])
 
                 # Change beta according to steepest descent with the given step length
 
@@ -482,7 +482,7 @@ class FIML:
 
         obj_value = 0.0
         for i_eqn in range(len(self.eqns)):
-            obj_value = obj_value + self.eqns[i_eqn].getObj(self.data)
+            obj_value = obj_value + self.eqns[i_eqn].getObj(self.data[i_eqn])
         t1 = time.time()
         print("Iteration %9d\t\tObjective Function %E\t\tTime taken %E"%(iteration+1, obj_value, t1-t0))
         self.optim_history[self.n_iter] = obj_value
@@ -573,7 +573,7 @@ class FIML:
 
                 # Evaluate the value of objective function and add to the total objective function (sum of all the cases)
 
-                obj_value = obj_value + self.eqns[i_eqn].getObj(self.data)
+                obj_value = obj_value + self.eqns[i_eqn].getObj(self.data[i_eqn])
 
                 # Change beta according to steepest descent with the given step length
 
@@ -614,7 +614,7 @@ class FIML:
 
         obj_value = 0.0
         for i_eqn in range(len(self.eqns)):
-            obj_value = obj_value + self.eqns[i_eqn].getObj(self.data)
+            obj_value = obj_value + self.eqns[i_eqn].getObj(self.data[i_eqn])
         t1 = time.time()
         print("Iteration %9d\t\tObjective Function %E\t\tTime taken %E"%(iteration+1, obj_value, t1-t0))
         self.optim_history[self.n_iter] = obj_value
@@ -717,7 +717,7 @@ class FIML:
                 
                 # Evaluate the value of objective function and add to the total objective function (sum of all the cases)
 
-                obj_value = obj_value + self.eqns[i_eqn].getObj(self.data)
+                obj_value = obj_value + self.eqns[i_eqn].getObj(self.data[i_eqn])
 
                 # Scale weights' sensitivities as required
 
@@ -751,7 +751,7 @@ class FIML:
 
         obj_value = 0.0
         for i_eqn in range(len(self.eqns)):
-            obj_value = obj_value + self.eqns[i_eqn].getObj(self.data)
+            obj_value = obj_value + self.eqns[i_eqn].getObj(self.data[i_eqn])
         t1 = time.time()
         print("Iteration %9d\t\tObjective Function %E\t\tTime taken %E"%(iteration+1, obj_value, t1-t0))
         self.optim_history[self.n_iter] = obj_value

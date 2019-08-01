@@ -14,7 +14,7 @@ from Features import *
 #                                             of user-defined functions in the companion file of Features.py
 #                                             and FIML_type is mandatory with options "Classic", "Direct" or "Embedded")
 
-FIML_type      = "Embedded"
+FIML_type      = "Classic"
 Problem        = "RadiativeHeatTransfer"
 Features_name  = "TempFtr"
 
@@ -87,7 +87,7 @@ Hidden_Layers = [10]
 # Choose an optimizer for the neural network and edit any default values by an update dictionary
 
 nn_opt               = 'adam'
-nn_opt_params_update = {'alpha':0.001, 'beta_1':0.7}      # A possible update would look like --->  nn_opt_params_update = {'alpha':0.01, 'beta_1':0.99, 'beta_2':0.9999, 'eps':1e-9}
+nn_opt_params_update = {'alpha':0.003, 'beta_1':0.7}      # A possible update would look like --->  nn_opt_params_update = {'alpha':0.01, 'beta_1':0.99, 'beta_2':0.9999, 'eps':1e-9}
 
 # Choose an activation function, number of epochs to be trained on and batch size
 
@@ -126,6 +126,8 @@ fiml.inverse_solve()
 
 if postprocess==True:
 
+    call("mkdir -p %s/figs"%fiml.folder_name, shell=True)
+    
     mysemilogy(0, np.linspace(0., fiml.n_iter, fiml.n_iter+1), fiml.optim_history, '-ob', 2.0, None)
     myfig(0, "Iterations", "Objective Function", "Optimization convergence")
     myfigsave(fiml.folder_name, 0)
@@ -134,9 +136,7 @@ if postprocess==True:
     
         eqn = eqns[i_eqn]
     
-        baseline_data = np.loadtxt("../Model_solutions/solution_%d"%T_inf)
-    
-        call("mkdir -p %s/figs"%fiml.folder_name, shell=True)
+        baseline_data = np.loadtxt("../Model_solutions/solution_%d"%T_inf_list[i_eqn])
     
         if fiml.kind=="Classic":
             legend_str = "Inverse"
