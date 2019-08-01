@@ -21,13 +21,13 @@ class FIML:
                        sav_iter=1):
         
         print("")
-        print("|'''''''\    /'''''''|=====================================================================================================")
-        print("|_       \  /       _|                         Field Inversion and Machine Learning Framework v1.0                         ")
-        print("  |   |\  \/  /|   |                          -----------------------------------------------------                        ")
-        print("  |   | \    / |   |         Developed at : Computational Aerosciences Laboratory, University of Michigan, Ann Arbor       ")
-        print("  |   |  \  /  |   |    Methodology developed by: Dr. K. Duraisamy, Dr. E. J. Parish, Dr. A. P. Singh, Dr. J. R. Holland   ")
-        print("|''   ''| \/ |''   ''|                                      Author : Vishal Srivastava                                     ")
-        print("|_______|    |_______|=====================================================================================================")
+        print("=====================================================================================================")#|'''''''\    /'''''''|
+        print("                         Field Inversion and Machine Learning Framework v1.0                         ")#|_       \  /       _|
+        print("                        -----------------------------------------------------                        ")#  |   |\  \/  /|   |  
+        print("       Developed at : Computational Aerosciences Laboratory, University of Michigan, Ann Arbor       ")#  |   | \    / |   |  
+        print("  Methodology developed by: Dr. K. Duraisamy, Dr. E. J. Parish, Dr. A. P. Singh, Dr. J. R. Holland   ")#  |   |  \  /  |   |  
+        print("                                      Author : Vishal Srivastava                                     ")#|''   ''| \/ |''   ''|
+        print("=====================================================================================================")#|_______|    |_______|
         print("")
 
         
