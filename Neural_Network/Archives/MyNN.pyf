@@ -1,0 +1,39 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module MyNN ! in 
+    interface  ! in :MyNN
+        module nn ! in :MyNN:MyNN.f90
+            subroutine predict(act_fn,n_layers,n_neurons_layer,n_features,n_weights_network,weights,n_neurons_network,neurons,n_data,features,beta) ! in :MyNN:MyNN.f90:nn
+                character*25 intent(in) :: act_fn
+                integer, optional,intent(in),check(len(n_neurons_layer)>=n_layers),depend(n_neurons_layer) :: n_layers=len(n_neurons_layer)
+                integer dimension(n_layers),intent(in) :: n_neurons_layer
+                integer, optional,intent(in),check(shape(features,0)==n_features),depend(features) :: n_features=shape(features,0)
+                integer, optional,intent(in),check(len(weights)>=n_weights_network),depend(weights) :: n_weights_network=len(weights)
+                real*8 dimension(n_weights_network),intent(inout) :: weights
+                integer, optional,intent(in),check(len(neurons)>=n_neurons_network),depend(neurons) :: n_neurons_network=len(neurons)
+                real*8 dimension(n_neurons_network),intent(inout) :: neurons
+                integer, optional,intent(in),check(shape(features,1)==n_data),depend(features) :: n_data=shape(features,1)
+                real*8 dimension(n_features,n_data),intent(inout) :: features
+                real*8 dimension(n_data),intent(out),depend(n_data) :: beta
+            end subroutine predict
+            subroutine get_sens(act_fn,n_layers,n_neurons_layer,n_features,n_weights_network,weights,n_neurons_network,neurons,n_data,features,d_beta,d_weights) ! in :MyNN:MyNN.f90:nn
+                character*25 intent(in) :: act_fn
+                integer, optional,intent(in),check(len(n_neurons_layer)>=n_layers),depend(n_neurons_layer) :: n_layers=len(n_neurons_layer)
+                integer dimension(n_layers),intent(in) :: n_neurons_layer
+                integer, optional,intent(in),check(shape(features,0)==n_features),depend(features) :: n_features=shape(features,0)
+                integer, optional,intent(in),check(len(weights)>=n_weights_network),depend(weights) :: n_weights_network=len(weights)
+                real*8 dimension(n_weights_network),intent(inout) :: weights
+                integer, optional,intent(in),check(len(neurons)>=n_neurons_network),depend(neurons) :: n_neurons_network=len(neurons)
+                real*8 dimension(n_neurons_network),intent(inout) :: neurons
+                integer, optional,intent(in),check(shape(features,1)==n_data),depend(features) :: n_data=shape(features,1)
+                real*8 dimension(n_features,n_data),intent(inout) :: features
+                real*8 dimension(n_data),intent(inout),depend(n_data) :: d_beta
+                real*8 dimension(n_weights_network),intent(out),depend(n_weights_network) :: d_weights
+            end subroutine get_sens
+        end module nn
+    end interface 
+end python module MyNN
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
